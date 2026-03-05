@@ -1,6 +1,6 @@
 /**
- * hex2rgb
- * https://github.com/glnster/hex2rgb
+ * hex2oklch
+ * https://github.com/glnster/hex2oklch
  *
  * Copyright (c) 2015 Glenn Cueto
  * Licensed under the MIT license.
@@ -18,8 +18,7 @@
  *                        against the given hex. Defaults to 'inherit' or yiqDefault's value.
  */
 
-var hex2rgb = function(hex, options) {
-  'use strict';
+const hex2oklch = function(hex, options) {
 
   // checks and defaults
   if (typeof hex !== 'string') {
@@ -33,11 +32,11 @@ var hex2rgb = function(hex, options) {
   options.rgbStringDefault = (typeof options.rgbStringDefault === 'string') ? options.rgbStringDefault : 'inherit';
   options.yiqDefault = (typeof options.yiqDefault === 'string') ? options.yiqDefault : 'inherit';
 
-  var hlen = hex.length,
-    cleanHex,
-    RGB = [255, 255, 255],
-    rgbString = options.rgbStringDefault,
-    yiqres = options.yiqDefault;
+  const hlen = hex.length;
+  let cleanHex;
+  let RGB = [255, 255, 255];
+  let rgbString = options.rgbStringDefault;
+  let yiqres = options.yiqDefault;
 
   // expand hex input
   if (hlen === 3) {
@@ -48,15 +47,15 @@ var hex2rgb = function(hex, options) {
   cleanHex = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
   if (cleanHex !== null) {
-    var num = parseInt(cleanHex, 16);
+    const num = parseInt(cleanHex, 16);
     RGB = [num >> 16, num >> 8 & 255, num & 255];
     rgbString = 'rgb(' + RGB[0] + ', ' + RGB[1] + ', ' + RGB[2] + ')';
 
-    var yiq = ((RGB[0] * 299) + (RGB[1] * 587) + (RGB[2] * 114)) / 1000;
+    const yiq = ((RGB[0] * 299) + (RGB[1] * 587) + (RGB[2] * 114)) / 1000;
     yiqres = (yiq >= 128 || isNaN(yiq)) ? 'black' : 'white';
 
   } else if (options.debug === true) {
-    console.error('(hex2rgb) ' + hex + ': Expected 3 or 6 HEX-ONLY chars. Returning defaults.');
+    console.error('(hex2oklch) ' + hex + ': Expected 3 or 6 HEX-ONLY chars. Returning defaults.');
   }
 
   return {
@@ -67,4 +66,4 @@ var hex2rgb = function(hex, options) {
 
 };
 
-module.exports = hex2rgb;
+export default hex2oklch;

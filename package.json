@@ -1,21 +1,29 @@
 {
-  "name": "hex2rgb",
-  "version": "2.2.0",
+  "name": "hex2oklch",
+  "version": "3.0.0",
   "description": "Converts hex color to rgb and calculates appropriate corresponding foreground.",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "scripts": {
-    "test": "make test"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/glnster/hex2rgb.git"
+    "url": "https://github.com/glnster/hex2oklch.git"
   },
   "keywords": [
     "hex",
     "rgb",
+    "oklch",
     "yiq",
     "convert",
     "hex to rgb",
@@ -23,22 +31,15 @@
     "foreground"
   ],
   "author": "Glenn Cueto <glenncueto@gmail.com> (http://gcgrafix.com)",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/glnster/hex2rgb/blob/master/LICENSE-MIT"
-    }
-  ],
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/glnster/hex2rgb/issues"
+    "url": "https://github.com/glnster/hex2oklch/issues"
   },
-  "homepage": "https://github.com/glnster/hex2rgb",
+  "homepage": "https://github.com/glnster/hex2oklch",
   "devDependencies": {
-    "chai": "^2.2.0",
-    "gulp": "^3.8.11",
-    "gulp-istanbul": "^0.8.1",
-    "gulp-mocha": "^2.0.1",
-    "istanbul": "^0.3.13",
-    "mocha": "^2.2.4"
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "vitest": "^3.0.0"
   }
 }
