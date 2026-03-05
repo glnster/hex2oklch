@@ -1,88 +1,66 @@
-hex2rgb
-=======
+hex2oklch
+=========
 
 Converts hex color to rgb and calculates appropriate corresponding foreground.
 
-[![NPM](https://img.shields.io/npm/v/hex2rgb.svg)](https://www.npmjs.com/package/hex2rgb) [![Bower](https://img.shields.io/bower/v/hex2rgb.svg)](https://github.com/glnster/hex2rgb) [![Build Status](https://travis-ci.org/glnster/hex2rgb.svg?branch=master)](https://travis-ci.org/glnster/hex2rgb) [![Test Coverage](https://codeclimate.com/github/glnster/hex2rgb/badges/coverage.svg)](https://codeclimate.com/github/glnster/hex2rgb)
+[![CI](https://github.com/glnster/hex2oklch/actions/workflows/ci.yml/badge.svg)](https://github.com/glnster/hex2oklch/actions/workflows/ci.yml) [![NPM](https://img.shields.io/npm/v/hex2oklch.svg)](https://www.npmjs.com/package/hex2oklch)
 
 
 ## Example
 
-For a dark hex color, hex2rgb will give you the rgb equivalent. It will also calculate and return an appropriate constrasting foreground (either 'black' or 'white').
+For a dark hex color, hex2oklch will give you the rgb equivalent. It will also calculate and return an appropriate contrasting foreground (either 'black' or 'white').
 
-Here's hex2rgb in action. Note the black or white text color (foreground) based on the background color.
+Here's hex2oklch in action. Note the black or white text color (foreground) based on the background color.
 
 ![example.png](example.png)
 
 ## Installation
 
-via NPM:
-
-`npm install hex2rgb --save`
-
-via Bower:
-
-`bower install hex2rgb --save`
+```sh
+npm install hex2oklch
+```
 
 ## Usage
 
-### Using Bower
-
-Include `hex2rgb.js` in your web app and use it as usual:
-
 ```js
-<script src="hex2rgb.js"></script>
-<script>
-	hex2rgb('0033ff').rgb; // => [0, 51, 255]
-	hex2rgb('0033ff').rgbString; // => 'rgb(0, 51, 255)'
-</script>
-```
+import hex2oklch from 'hex2oklch';
 
-### Using NodeJS
+const hex = '0033ff';
+const shorthex = '03f';
+const hashhex = '#0033ff';
+const badhex = '00PS1E';
 
-```js
-var hex2rgb = require('hex2rgb');
-
-var background,
-	foreground,
-	hex = '0033ff',
-	shorthex = '03f',
-	hashhex = '#0033ff',
-	badhex = '00PS1E';
-
-background = hex2rgb(hex).rgb; // => [0, 51, 255]
-background = hex2rgb(shorthex).rgb; // => [0, 51, 255]
-background = hex2rgb(hashhex).rgb; // => [0, 51, 255]
-background = hex2rgb(hex).rgbString; // => 'rgb(0, 51, 255)'
-foreground = hex2rgb(hex).yiq; // => white
+hex2oklch(hex).rgb;        // => [0, 51, 255]
+hex2oklch(shorthex).rgb;   // => [0, 51, 255]
+hex2oklch(hashhex).rgb;    // => [0, 51, 255]
+hex2oklch(hex).rgbString;  // => 'rgb(0, 51, 255)'
+hex2oklch(hex).yiq;        // => 'white'
 
 // try with bad input and with options specified
-background = hex2rgb(badhex, {debug: true, rgbStringDefault:'#e9e9e9'}).rgb;
-// logs "(hex2rgb) 00PS1E: Expected 3 or 6 HEX-ONLY chars. Returning defaults."
+hex2oklch(badhex, {debug: true, rgbStringDefault: '#e9e9e9'}).rgb;
+// logs "(hex2oklch) 00PS1E: Expected 3 or 6 HEX-ONLY chars. Returning defaults."
 // Returns rgb [255, 255, 255], rgbString '#e9e9e9'
 // and yiq 'inherit' as fall-backs.
-
-
 ```
 
 ## API
 
-### *hex2rgb( hex {String}, options {Object} )*
+### *hex2oklch( hex {String}, options {Object} )*
 
 #### hex
 A hex-only string of 3 or 6 characters. If the string has a # prefix, the # gets trimmed off.
 
 #### {debug: true | false}
 
-You can pass {debug:true} to enable errors logged to console.
+You can pass {debug: true} to enable errors logged to console.
 
 #### {rgbStringDefault: "String e.g. transparent | black | #e9e9e9"}
 
-As of v2 you can specify a default string that `.rgbString` will return when hex input is invalid or yet to be calculated. In v1, `.rgbString` returned "rgb(0,0,0)" (black).
+You can specify a default string that `.rgbString` will return when hex input is invalid or yet to be calculated.
 
 #### {yiqDefault: "String e.g. inherit | gray | #333"}
 
-Similar to rgbStringDefault above. In v1 `.yiq` returned "white" by default.
+Similar to rgbStringDefault above.
 
 #### .rgb
 Returns an array in `[r, g, b]` format. If hex input is invalid or yet to be calculated `[255, 255, 255]` (white) is returned as a fallback.
@@ -95,9 +73,10 @@ Returns a string of either `'white'` or `'black'`. If hex input is invalid or ye
 
 ## Tests
 
-`npm test`
-
-`gulp test` to generate code coverage
+```sh
+npm test
+npm run test:coverage
+```
 
 ## Contributing
 
@@ -110,11 +89,11 @@ No formal styleguide, but please maintain the existing coding style. Add unit te
 
 ## Release History
 
+- 3.0.0 - Renamed to hex2oklch, ESM-only, Vitest, ESLint flat config, GitHub Actions CI
 - 2.2.0 - Minor description updates
 - 2.0.0 - Returns [255, 255, 255], 'inherit', specified values as defaults/fallbacks
 - 1.4.0 - Returns [0,0,0], 'rgb(0,0,0)' & 'white' as defaults/fallbacks
 - 1.0.0 - Lock in release
 - 0.8.0 - Add rgbString property
-- 0.7.0 - Publish to Bower
 - 0.5.0 - Update descriptions
 - 0.1.0 - Initial release
