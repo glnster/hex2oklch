@@ -118,11 +118,11 @@ Add Playwright output dirs to ignores:
 ### Success Criteria
 
 #### Automated Verification
-- [ ] `npm install` completes without errors
-- [ ] `npx playwright install chromium` completes
-- [ ] `npx serve . --listen 3473` starts and serves files at `http://localhost:3473/`
-- [ ] `npm run lint` passes (ESLint config updated)
-- [ ] `npm test` still passes (Vitest unchanged)
+- [x] `npm install` completes without errors
+- [x] `npx playwright install chromium` completes
+- [x] `npx serve . --listen 3473` starts and serves files at `http://localhost:3473/`
+- [x] `npm run lint` passes (ESLint config updated)
+- [x] `npm test` still passes (Vitest unchanged)
 
 #### Manual Verification
 - [ ] `playwright.config.js` exists at project root
@@ -247,8 +247,8 @@ A self-contained HTML page that:
 ### Success Criteria
 
 #### Automated Verification
-- [ ] File exists: `test/visual/index.html`
-- [ ] `npx serve . --listen 3473` serves the page at `http://localhost:3473/test/visual/index.html`
+- [x] File exists: `test/visual/index.html`
+- [x] `npx serve . --listen 3473` serves the page at `http://localhost:3473/test/visual/index.html`
 
 #### Manual Verification
 - [ ] Open `http://localhost:3473/test/visual/index.html` in a browser
@@ -347,9 +347,9 @@ Add to `"scripts"`:
 ### Success Criteria
 
 #### Automated Verification
-- [ ] `npm run test:visual` passes (all 6 tests green, headless)
-- [ ] `npm test` still passes (Vitest unchanged)
-- [ ] `npm run lint` passes
+- [x] `npm run test:visual` passes (all 6 tests green, headless)
+- [x] `npm test` still passes (Vitest unchanged)
+- [x] `npm run lint` passes
 
 #### Manual Verification
 - [ ] `npm run test:visual:ui` opens Playwright UI Mode showing the test list and a browser panel with the color swatch page

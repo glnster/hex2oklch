@@ -17,6 +17,6 @@ export default [
     },
   },
   {
-    ignores: ['coverage/**'],
+    ignores: ['coverage/**', 'playwright-report/**', 'test-results/**'],
   },
 ];
