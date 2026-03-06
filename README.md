@@ -74,9 +74,17 @@ Returns a string of either `'white'` or `'black'`. If hex input is invalid or ye
 ## Tests
 
 ```sh
+# Unit tests (Vitest)
 npm test
 npm run test:coverage
+
+# Visual tests (Playwright) — opens a browser with color swatches
+npm run test:visual           # headless
+npm run test:visual:ui        # interactive UI mode (like QUnit)
+npm run test:visual:debug     # headed browser + Inspector, paused
 ```
+
+Visual tests serve an HTML page that renders color swatches using the library, then verify foreground/background colors in a real browser. Use `test:visual:ui` for an interactive test runner or `test:visual:debug` to pause and inspect elements.
 
 ## Contributing
 
