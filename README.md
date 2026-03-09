@@ -1,14 +1,12 @@
 hex2oklch
 =========
 
-Converts hex color to rgb and calculates appropriate corresponding foreground.
-
-[![CI](https://github.com/glnster/hex2oklch/actions/workflows/ci.yml/badge.svg)](https://github.com/glnster/hex2oklch/actions/workflows/ci.yml) [![NPM](https://img.shields.io/npm/v/hex2oklch.svg)](https://www.npmjs.com/package/hex2oklch)
+Converts hex color to OKLCH and calculates appropriate corresponding foreground.
 
 
 ## Example
 
-For a dark hex color, hex2oklch will give you the rgb equivalent. It will also calculate and return an appropriate contrasting foreground (either 'black' or 'white').
+For a dark hex color, hex2oklch will give you the OKLCH equivalent (e.g. `oklch(58.87% 0.2323 282.69)`). It will also calculate and return an appropriate contrasting foreground (either 'black' or 'white').
 
 Here's hex2oklch in action. Note the black or white text color (foreground) based on the background color.
 
@@ -30,16 +28,16 @@ const shorthex = '03f';
 const hashhex = '#0033ff';
 const badhex = '00PS1E';
 
-hex2oklch(hex).rgb;        // => [0, 51, 255]
-hex2oklch(shorthex).rgb;   // => [0, 51, 255]
-hex2oklch(hashhex).rgb;    // => [0, 51, 255]
-hex2oklch(hex).rgbString;  // => 'rgb(0, 51, 255)'
-hex2oklch(hex).yiq;        // => 'white'
+hex2oklch(hex).oklch;        // => { L: 0.26..., C: 0.24..., H: 264.05... }
+hex2oklch(shorthex).oklch;   // => same L,C,H as 0033ff
+hex2oklch(hashhex).oklch;    // => same
+hex2oklch(hex).oklchString; // => 'oklch(26.45% 0.2432 264.05)' (example)
+hex2oklch(hex).yiq;         // => 'white'
 
 // try with bad input and with options specified
-hex2oklch(badhex, {debug: true, rgbStringDefault: '#e9e9e9'}).rgb;
+hex2oklch(badhex, { debug: true, oklchStringDefault: '#e9e9e9' });
 // logs "(hex2oklch) 00PS1E: Expected 3 or 6 HEX-ONLY chars. Returning defaults."
-// Returns rgb [255, 255, 255], rgbString '#e9e9e9'
+// Returns oklch { L: 1, C: 0, H: 0 }, oklchString '#e9e9e9'
 // and yiq 'inherit' as fall-backs.
 ```
 
@@ -54,19 +52,19 @@ A hex-only string of 3 or 6 characters. If the string has a # prefix, the # gets
 
 You can pass {debug: true} to enable errors logged to console.
 
-#### {rgbStringDefault: "String e.g. transparent | black | #e9e9e9"}
+#### {oklchStringDefault: "String e.g. transparent | black | #e9e9e9"}
 
-You can specify a default string that `.rgbString` will return when hex input is invalid or yet to be calculated.
+You can specify a default string that `.oklchString` will return when hex input is invalid or yet to be calculated.
 
 #### {yiqDefault: "String e.g. inherit | gray | #333"}
 
-Similar to rgbStringDefault above.
+Similar to oklchStringDefault above.
 
-#### .rgb
-Returns an array in `[r, g, b]` format. If hex input is invalid or yet to be calculated `[255, 255, 255]` (white) is returned as a fallback.
+#### .oklch
+Returns an object `{ L, C, H }`. L is in [0, 1], C ≥ 0, H in [0, 360] degrees (or 0 when achromatic). If hex input is invalid or yet to be calculated, `{ L: 1, C: 0, H: 0 }` is returned as a fallback.
 
-#### .rgbString
-Returns a string in `rgb(r, g, b)` format. If hex input is invalid or yet to be calculated, either `'inherit'` or your specified string value is returned as a fallback.
+#### .oklchString
+Returns a string in `oklch(L% C H)` format (e.g. `oklch(58.87% 0.2323 282.69)`). If hex input is invalid or yet to be calculated, either `'inherit'` or your specified string value is returned as a fallback.
 
 #### .yiq
 Returns a string of either `'white'` or `'black'`. If hex input is invalid or yet to be calculated, either `'inherit'` or your specified string value is returned as a fallback.
@@ -97,6 +95,7 @@ No formal styleguide, but please maintain the existing coding style. Add unit te
 
 ## Release History
 
+- 4.0.0 - Hex to OKLCH; replace RGB with OKLCH; YIQ derived from OKLCH; `oklchStringDefault` option
 - 3.0.0 - Renamed to hex2oklch, ESM-only, Vitest, ESLint flat config, GitHub Actions CI
 - 2.2.0 - Minor description updates
 - 2.0.0 - Returns [255, 255, 255], 'inherit', specified values as defaults/fallbacks

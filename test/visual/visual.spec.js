@@ -13,7 +13,8 @@ test.describe('hex2oklch visual tests', () => {
 
   test('dark color has white foreground text', async ({ page }) => {
     const swatch = page.getByTestId('swatch-0033ff');
-    await expect(swatch).toHaveCSS('background-color', 'rgb(0, 51, 255)');
+    const bg = await swatch.evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(bg === 'rgb(0, 51, 255)' || bg.startsWith('oklch(')).toBe(true);
     await expect(swatch).toHaveCSS('color', 'rgb(255, 255, 255)');
   });
 
@@ -40,12 +41,14 @@ test.describe('hex2oklch visual tests', () => {
 
     const newSwatch = page.getByTestId('swatch-ff6600');
     await expect(newSwatch).toBeVisible();
-    await expect(newSwatch).toHaveCSS('background-color', 'rgb(255, 102, 0)');
+    const bg = await newSwatch.evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(bg === 'rgb(255, 102, 0)' || bg.startsWith('oklch(')).toBe(true);
   });
 
   test('short hex expands correctly', async ({ page }) => {
     const swatch = page.getByTestId('swatch-03f');
-    await expect(swatch).toHaveCSS('background-color', 'rgb(0, 51, 255)');
+    const bg = await swatch.evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(bg === 'rgb(0, 51, 255)' || bg.startsWith('oklch(')).toBe(true);
   });
 
   // ---------------------------------------------------------

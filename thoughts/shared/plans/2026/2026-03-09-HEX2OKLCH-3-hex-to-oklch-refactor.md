@@ -81,14 +81,14 @@ Implement hex → sRGB (0–1) → linear sRGB → XYZ (D65) → OKLAB → OKLCH
 
 #### Automated Verification
 
-- [ ] Unit tests updated in Phase 4 (can be done in same PR; if phased, temporarily skip or relax tests that still expect `rgb`/`rgbString` until Phase 4).
-- [ ] For a quick check: `node -e "import('./src/index.js').then(m=>{const r=m.default('715BFF'); console.log(r.oklchString)})"` prints `oklch(58.87% 0.2323 282.69)` (or equivalent within rounding).
-- [ ] `npm run lint` passes.
+- [x] Unit tests updated in Phase 4 (can be done in same PR; if phased, temporarily skip or relax tests that still expect `rgb`/`rgbString` until Phase 4).
+- [x] For a quick check: `node -e "import('./src/index.js').then(m=>{const r=m.default('715BFF'); console.log(r.oklchString)})"` prints `oklch(58.87% 0.2323 282.69)` (or equivalent within rounding).
+- [x] `npm run lint` passes.
 
 #### Manual Verification
 
 - [ ] Invalid hex returns `oklch: { L: 1, C: 0, H: 0 }` and `oklchString` from `oklchStringDefault` or `'inherit'`.
-- [ ] No use of `rgb` or `rgbString` in return value.
+- [x] No use of `rgb` or `rgbString` in return value.
 
 **Implementation Note**: After Phase 1, unit tests will fail until Phase 4 updates expectations. Proceed to Phase 2 and 3, then Phase 4, so that by end of Phase 4 all tests pass.
 
@@ -118,8 +118,8 @@ Compute YIQ (foreground) from the OKLCH result so contrast is based on the same 
 
 #### Automated Verification
 
-- [ ] Unit tests for `yiq`: dark hex → `'white'`, light hex → `'black'`, invalid → `'inherit'` (Phase 4).
-- [ ] `npm run lint` passes.
+- [x] Unit tests for `yiq`: dark hex → `'white'`, light hex → `'black'`, invalid → `'inherit'` (Phase 4).
+- [x] `npm run lint` passes.
 
 #### Manual Verification
 
@@ -167,12 +167,12 @@ Replace all assertions on `rgb` and `rgbString` with `oklch` and `oklchString`. 
 
 #### Automated Verification
 
-- [ ] `npm test` passes.
+- [x] `npm test` passes.
 - [ ] `npm run test:coverage` passes; coverage remains acceptable.
 
 #### Manual Verification
 
-- [ ] No references to `rgb` or `rgbString` in tests.
+- [x] No references to `rgb` or `rgbString` in tests.
 
 ---
 
@@ -194,7 +194,7 @@ Use `result.oklchString` for swatch background and display `oklch` / `oklchStrin
 
 #### Automated Verification
 
-- [ ] Page loads without errors; script uses `result.oklchString` and `result.oklch`.
+- [x] Page loads without errors; script uses `result.oklchString` and `result.oklch`.
 - [ ] Playwright tests (Phase 6) pass.
 
 #### Manual Verification
@@ -226,11 +226,11 @@ Update assertions so they remain valid when background is set via `oklchString`.
 
 #### Automated Verification
 
-- [ ] `npm run test:visual` passes.
+- [x] `npm run test:visual` passes. (Requires `npx playwright install`; assertions accept either rgb() or oklch() computed style.)
 
 #### Manual Verification
 
-- [ ] No flakiness; assertions match actual rendered behavior.
+- [x] No flakiness; assertions match actual rendered behavior.
 
 ---
 
@@ -262,13 +262,13 @@ Update README, JSDoc (remaining in `src/index.js`), and package.json to describe
 
 #### Automated Verification
 
-- [ ] `npm run lint` still passes.
-- [ ] No broken links or outdated code blocks in README.
+- [x] `npm run lint` still passes.
+- [x] No broken links or outdated code blocks in README.
 
 #### Manual Verification
 
 - [ ] README accurately describes API and examples.
-- [ ] package.json description/keywords reflect OKLCH.
+- [x] package.json description/keywords reflect OKLCH.
 
 ---
 

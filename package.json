@@ -1,7 +1,7 @@
 {
   "name": "hex2oklch",
-  "version": "3.0.0",
-  "description": "Converts hex color to rgb and calculates appropriate corresponding foreground.",
+  "version": "4.0.0",
+  "description": "Converts hex color to OKLCH and calculates appropriate corresponding foreground.",
   "type": "module",
   "main": "src/index.js",
   "exports": {
@@ -25,11 +25,10 @@
   },
   "keywords": [
     "hex",
-    "rgb",
     "oklch",
     "yiq",
     "convert",
-    "hex to rgb",
+    "hex to oklch",
     "contrast",
     "foreground"
   ],

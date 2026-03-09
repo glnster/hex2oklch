@@ -47,15 +47,17 @@
       swatch.setAttribute('data-testid', `swatch-${hex.replace('#', '')}`);
 
       if (!isInvalid) {
-        swatch.style.backgroundColor = result.rgbString;
+        swatch.style.backgroundColor = result.oklchString;
         swatch.style.color = result.yiq;
       }
 
+      const oklchDetail = isInvalid
+        ? 'oklch: —<br>oklchString: —'
+        : `oklch: L=${result.oklch.L.toFixed(4)}, C=${result.oklch.C.toFixed(4)}, H=${result.oklch.H.toFixed(2)}<br>oklchString: ${result.oklchString}`;
       swatch.innerHTML = `
         <div class="hex">${hex}</div>
         <div class="details">
-          rgb: [${result.rgb.join(', ')}]<br>
-          rgbString: ${result.rgbString}<br>
+          ${oklchDetail}<br>
           yiq: ${result.yiq}
         </div>
       `;
