@@ -17,6 +17,15 @@ export default [
     },
   },
   {
+    files: ['test/visual/**/*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
+    },
+  },
+  {
     ignores: ['coverage/**', 'playwright-report/**', 'test-results/**'],
   },
 ];
