@@ -15,7 +15,7 @@ Here's hex2oklch in action. Note the black or white text color (foreground) base
 ## Installation
 
 ```sh
-npm install hex2oklch
+npm install github:glnster/hex2oklch
 ```
 
 ## Usage
