@@ -5,6 +5,7 @@ export default defineConfig({
     exclude: ['test/visual/**', 'node_modules/**'],
     coverage: {
       provider: 'v8',
+      reporter: ['text', 'lcov'],
     },
   },
 });

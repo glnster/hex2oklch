@@ -1,6 +1,10 @@
 hex2oklch
 =========
 
+[![npm version](https://img.shields.io/npm/v/hex2oklch.svg)](https://www.npmjs.com/package/hex2oklch)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/glnster/hex2oklch/ci.yml?branch=main)](https://github.com/glnster/hex2oklch/actions/workflows/ci.yml)
+[![codecov](https://img.shields.io/codecov/c/github/glnster/hex2oklch)](https://codecov.io/gh/glnster/hex2oklch)
+
 Converts hex color to OKLCH and calculates appropriate corresponding foreground.
 
 HEX2OKLCH is based on my original project, https://github.com/glnster/hex2rgb, and is updated to use OKLCH instead of RGB.
