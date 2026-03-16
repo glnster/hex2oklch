@@ -3,7 +3,7 @@ hex2oklch
 
 [![npm version](https://img.shields.io/npm/v/hex2oklch.svg)](https://www.npmjs.com/package/hex2oklch)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/glnster/hex2oklch/ci.yml?branch=main)](https://github.com/glnster/hex2oklch/actions/workflows/ci.yml)
-[![codecov](https://img.shields.io/codecov/c/github/glnster/hex2oklch)](https://codecov.io/gh/glnster/hex2oklch)
+[![codecov](https://codecov.io/github/glnster/hex2oklch/graph/badge.svg?token=PO6ZCKJ43G)](https://codecov.io/github/glnster/hex2oklch)
 
 Converts hex color to OKLCH and calculates appropriate corresponding foreground.
 

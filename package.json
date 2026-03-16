@@ -1,6 +1,6 @@
 {
   "name": "hex2oklch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Converts hex color to OKLCH and calculates appropriate corresponding foreground.",
   "type": "module",
   "main": "src/index.js",
