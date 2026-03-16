@@ -1,0 +1,13 @@
+# Dev and tooling
+node_modules
+coverage
+playwright-report
+test-results
+.github
+test
+*.config.js
+eslint.config.js
+
+# Internal docs (not part of published package)
+thoughts
+PUBLISH.md

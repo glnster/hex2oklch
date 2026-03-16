@@ -1,0 +1,48 @@
+{
+  "name": "hex2oklch",
+  "version": "1.0.0",
+  "description": "Converts hex color to OKLCH and calculates appropriate corresponding foreground.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:visual": "playwright test",
+    "test:visual:ui": "playwright test --ui",
+    "test:visual:debug": "playwright test --debug",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/glnster/hex2oklch.git"
+  },
+  "keywords": [
+    "hex",
+    "oklch",
+    "yiq",
+    "convert",
+    "hex to oklch",
+    "contrast",
+    "foreground"
+  ],
+  "author": "Glenn Cueto <glenncueto@gmail.com> (http://gcgrafix.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glnster/hex2oklch/issues"
+  },
+  "homepage": "https://github.com/glnster/hex2oklch",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@playwright/test": "^1.58.2",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "vitest": "^3.0.0"
+  }
+}
